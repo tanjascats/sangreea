@@ -7,4 +7,4 @@ def readJSON(json_file_path):
 
 
 if __name__ == '__main__':
-    print readJSON('../../data/gen_hierarchies/SexGH.json')
+    print(readJSON('../../data/gen_hierarchies/SexGH.json'))

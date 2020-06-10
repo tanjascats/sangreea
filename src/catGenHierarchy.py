@@ -1,4 +1,4 @@
-import io.jsonInput as json
+import src.io.jsonInput as json
 
 
 class CatGenHierarchy:
@@ -58,6 +58,6 @@ class CatGenHierarchy:
 
 if __name__ == '__main__':
     cgh = CatGenHierarchy('sex', '../data/gen_hierarchies/SexGH.json')
-    print cgh.getEntries()
-    print cgh.getNrLevels()
-    print cgh.getLevelEntry('Male')
+    print(cgh.getEntries())
+    print(cgh.getNrLevels())
+    print(cgh.getLevelEntry('Male'))
