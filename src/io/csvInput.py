@@ -42,5 +42,5 @@ def readAdjList(file_name):
 
 
 if __name__ == "__main__":
-    print readAdults(adult_file_name)
-    print readAdjList(adj_list_file_name)
+    print(readAdults(adult_file_name))
+    print(readAdjList(adj_list_file_name))

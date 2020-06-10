@@ -71,25 +71,39 @@ class NodeCluster:
 
 
     def computeRangeCost(self, gen_h, node):
-        # TODO implement range cost function
-
-        # Fake...
-        return random.randint(0, 1)
+        # size of the interval / size of the original interval
+        range_hierarchy = self._genHierarchies['range'][gen_h]
+        range_features = self._genRangeFeatures[gen_h]
+        node_value = self._dataset[node][gen_h]
+        range_cost = range_hierarchy.getCostOfRange(min(range_features[0], range_features[1], node_value),
+                                                       max(range_features[0], range_features[1], node_value))
+        return range_cost
 
 
     def computeNewGeneralization(self, gen_h, node):
-        # TODO find the lowest common generalization level between cluster
-        # and node and return level as well as the exact (string) value
-
-        # Fake...
-        return [0, "generalized!"]
+        # add node and return level as well as the exact (string) value
+        c_hierarchy = self._genHierarchies['categorical'][gen_h]
+        n_value = self._dataset[node][gen_h]
+        n_level = c_hierarchy.getLevelEntry(n_value)
+        c_value = self._genCatFeatures[gen_h]
+        c_level = c_hierarchy.getLevelEntry(c_value)
+        while n_value != c_value:
+            old_n_level = n_level
+            if c_level <= n_level:
+                n_value = c_hierarchy.getGeneralizationOf(n_value)
+                n_level -= 1
+            # if node and cluster are at the same level, go cluster up too
+            if old_n_level <= c_level:
+                c_value = c_hierarchy.getGeneralizationOf(c_value)
+                c_level -= 1
+        return [c_level, c_value]
 
 
     def computeSIL(self, node):
         # TODO implement SIL function with binary neighborhood vectors
 
         # Fake...
-        return random.randint(0, 1)
+        return 0
 
 
     def expandRange(self, range, nr):

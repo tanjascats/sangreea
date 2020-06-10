@@ -1,5 +1,5 @@
-import io.csvInput as csv
-import io.output as out
+import src.io.csvInput as csv
+import src.io.output as out
 import catGenHierarchy as CGH
 import rangeGenHierarchy as RGH
 import nodeCluster as CL
@@ -27,7 +27,7 @@ def prepareGenHierarchiesObject(dataset):
         idx_age = dataset[idx].get('age')
         min = idx_age if idx_age < min else min
         max = idx_age if idx_age > max else max
-    print "Found age range of: [" + str(min) + ":" + str(max) + "]"
+    print("Found age range of: [" + str(min) + ":" + str(max) + "]")
     genh_age = RGH.RangeGenHierarchy('age', min, max)
 
     # Let's create one central object holding all required gen hierarchies
@@ -49,7 +49,7 @@ def prepareGenHierarchiesObject(dataset):
 
 
 def main():
-    print "Starting SaNGreeA algorithm..."
+    print("Starting SaNGreeA algorithm...")
 
     ## Prepare io data structures
     adults = csv.readAdults(adults_csv)
@@ -93,10 +93,9 @@ def main():
         ## We have filled our cluster with k entries, push it to clusters
         clusters.append(cluster)
 
-    print "Successfully built " + str(len(clusters)) + " clusters."
+    print("Successfully built " + str(len(clusters)) + " clusters.")
 
     out.outputCSV(clusters, "anonymized_" + GLOB.VECTOR + '_weights.csv')
-
 
 
 if __name__ == '__main__':
