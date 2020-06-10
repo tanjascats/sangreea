@@ -1,12 +1,9 @@
-# Machine Learning for Health Informatics, Assignment 3:
-
-# Social network anonymization with SaNGreeA
+# Anonymization with SaNGreeA
 
 ---
+This is a proposed solution for the Assignment 3 of Machine Learning for Health Informatics at TU Wien. The skeleton of the SanGreeA algorithm from the [assignment](https://github.com/cassinius/mlhi-ass2-anonymization) is completed within this repository.
 
-**Name change**: This is now officially assignment 3, as Marcus' last one was already assignment 2.
-
-> Please read the original SaNGreeA paper contained in the 'paper' folder and / or watch the following YouTube movie before starting the assignment.
+>To familiarize yourself with SaNGreeA, please read the original SaNGreeA paper contained in the 'paper' folder and / or watch the following YouTube movie.
 
 [K-Anonymity in Social Networks](https://www.youtube.com/watch?v=l2mU0xHMumo)
 
@@ -20,7 +17,7 @@ In order to compute its clusters, SaNGreeA takes into account two different dist
 
 ### Input data
 
-For this assignment we are using
+As an example we are using 
 
 * a subset of the [adult dataset](https://archive.ics.uci.edu/ml/datasets/Adult) as feature vector input for our GIL computations
 	* please have a look at the respective [CSV file](https://github.com/cassinius/mlhi-ass2-anonymization/blob/master/data/input_sanitized.csv)
@@ -79,27 +76,16 @@ In order to run the code, simply execute the src/SaNGreeA.py file - if you need 
 * no dispersion of last cluster
 
 
-### Your part
+### Updates within this project
 
-You work will consist of implementing 3 functions in the NodeCluster class:
+The work consists of implementation of 3 functions in the NodeCluster class:
 
 1. computeRangeCost: Given this cluster and a candidate node, compute the cost for a potential expansion of the clusters current range (generalization, paper Definition 4, page 8)).
 2. computeNewGeneralization: Given this cluster and a candidate node, compute the most specific possible generalization for the node to fit into the cluster (walk up the hierarchy, paper Definition 4, page 8):
   * cluster['sex'] = Male, candidate['sex'] = Female => result = 'all'
 3. computeSIL: given the cluster and a candidate node, compute the structural neighborhood similarity using binary neighborhood vectors as given in the paper, Definition 11, page 12.
 
-The difference between my reference implementation and the assignment version with method stubs is only a few dozen lines of code, so this should be fairly straightforward ;)
-
-### Submission
-
-Please just fork the github repository, add your code, and send me a pull request when you're done.
-
-
-### Deadline
-
-Friday, July 8th, 23:59 hours ;)
-
-
-### Good luck!
 
 [Bernd Malle, June 15th, 2016]
+
+[Tanja Šarčević, June 10th, 2020]
